@@ -1,0 +1,22 @@
+{
+  "name": "todolist",
+  "version": "1.0.0",
+  "description": "There are **2 parts** to this homework. The homework is only complete if **all** parts are submitted.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zmiles17/ToDoList.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zmiles17/ToDoList/issues"
+  },
+  "homepage": "https://github.com/zmiles17/ToDoList#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}

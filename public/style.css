@@ -1,0 +1,127 @@
+html {
+    height: 100%;
+}
+
+body {
+    display: grid;
+    grid-template-rows: 100px 75px 1fr;
+    grid-template-areas:
+    "header"
+    "div"
+    "main";
+    height: 100%;
+}
+
+header {
+    background-image: linear-gradient(to right, rgb(165, 7, 104), purple);
+    grid-area: header;
+}
+
+div {
+    grid-area: div;
+}
+
+main {
+    grid-area: main;
+    font-family: 'Roboto';
+}
+
+h1 {
+    font-weight: 100;
+    font-size: 40px;
+    font-family: "Roboto";
+    color: white;
+    margin-top: 30px;
+    margin-left: 25px;
+}
+
+form {
+    text-align: center;
+}
+
+.fa-times {
+    cursor: pointer;
+    color: rgb(26, 61, 156);
+    float: right;
+}
+
+.fa-share {
+    margin-left: 5px;
+}
+
+#userInput {
+    border: rgba(128, 0, 128, 0.521) solid 1px;
+    border-radius: 5px;
+    background-color: rgba(238, 231, 231, 0.541);
+    font-family: 'Roboto';
+    font-weight: 500;
+    width: 75%;
+    justify-self: center;
+    height: 20px;
+}
+
+#checkbox {
+    border: 5px black solid;
+}
+
+#add-btn {
+    background: none;
+    color: rgb(26, 61, 156);
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit; 
+}
+
+ul {
+    border-top: 1px solid rgba(238, 231, 231, 0.541);
+    margin: 30px 20px 0px 20px;
+    text-align: center;
+    grid-column: span 5/6;
+}
+
+li {
+    margin-top: 20px;
+    display: inline-block;
+    width: 87%;
+    background: rgba(238, 231, 231, 0.541);
+    height: 20px;
+    text-align: left;
+    font-weight: 700;
+}
+
+::placeholder {
+    padding-left: 10px;
+}
+
+@media only screen and (min-width: 1360px){
+
+   main {
+        border: 1px rgba(128, 0, 128, 0.521) solid;
+        border-bottom: initial;
+        border-radius: 10px 10px 0px 0px;
+        margin-left: 500px;
+        margin-right: 500px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 100px 1fr;
+    }
+
+    form {
+        display: inline-block;
+        grid-column: 1/4;
+        height: 30px;
+        padding-top: 50px;
+    }
+
+    #userInput {
+        border-radius: 20px;
+        width: 80%;
+    }
+
+    li {
+        width: 87%;
+        background: rgba(238, 231, 231, 0.541);
+    }
+}
