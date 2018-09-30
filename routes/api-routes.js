@@ -1,24 +1,28 @@
-const db = require('../models/model.js');
-const list = [];
+const db = require('../models/model');
+
 module.exports = function (app) {
 
     app.get('/api/list', function (req, res) {
-        db.todoList.find({})
-            .then(function (dbtodoList) {
-                res.json(dbtodoList);
+        db.find({})
+            .then(function (db) {
+                console.log(db);
+                res.json(db);
             })
             .catch(function (err) {
+                console.log(err);
                 res.json(err);
             })
     })
 
 
     app.post('/add', function (req, res) {
-        db.todoList.create(req.body)
-            .then(function (dbtodoList) {
-                res.json(dbtodoList);
+        db.create(req.body)
+            .then(function (db) {
+                console.log(req.body);
+                res.json(db);
             })
             .catch(function (err) {
+                console.log(err);
                 res.json(err);
             })
     })
@@ -30,14 +34,14 @@ module.exports = function (app) {
     // });
 
     app.put('/api/update', (req, res) => {
-        const match = list.find(todo => todo.name === req.body.name);
-        match.completed = req.body.completed;
-        db.Todo.findOneAndUpdate({ itemName: req.params.id }, { $set: { completed: req.body.completed } })
+        db.findOneAndUpdate({ itemName: req.params.id }, { $set: { completed: req.body.completed } })
 
-            .then(function (dbtodoList) {
-                res.json(dbtodoList);
+            .then(function (db) {
+                console.log(db);
+                res.json(db);
             })
             .catch(function (err) {
+                console.log(err);
                 res.json(err);
             })
     });

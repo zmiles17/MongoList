@@ -3,16 +3,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const todoSchema = new Schema({
-    todoItem: {
         itemName: {
             type: String,
             unique: true,
-            required: "Enter a valid list item"
+            // required: [true, "Enter a valid list item"]
         },
         completed: {
-            type: Boolean
+            type: Boolean,
+            default: false
         }
-    }
 })
 
 let todoList = mongoose.model('todoList', todoSchema);
