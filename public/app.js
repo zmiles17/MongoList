@@ -9,7 +9,7 @@ const deleteItem = function (event) {
 const submitItem = function (event) {
     event.preventDefault();
     const data = $('input').val().trim();
-    $.ajax({ url: "/add", method: "POST", data: { TodoItem: data } }).then(function () {
+    $.ajax({ url: "/add", method: "POST", data: { itemName: data } }).then(function () {
         getItems();
     });
 }
@@ -21,7 +21,7 @@ const getItems = function () {
         $('.fa-times').on('click', deleteItem);
         $('.checkbox').on('click', function (event) {
             const ID = $(event.target).attr('data-id');
-            $.ajax({ url: '/api/update', method: 'PUT', data: { ID: ID } })
+            $.ajax({ url: '/api/update', method: 'PUT', data: { itemName: ID } })
                 .then(function (res) {
                     getItems();
                 })
