@@ -4,12 +4,10 @@ module.exports = function (app) {
 
     app.get('/api/list', function (req, res) {
         db.find({})
-            .then(function (db) {
-                
+            .then(function (db) { 
                 res.json(db);
             })
             .catch(function (err) {
-                
                 res.json(err);
             })
     })
@@ -18,14 +16,12 @@ module.exports = function (app) {
     app.post('/add', function (req, res) {
         db.create(req.body)
             .then(function (db) {
-                
                 res.json(db);
             })
             .catch(function (err) {
-                
                 res.json(err);
             })
-            console.log(req.body);
+            
     })
 
     app.delete('/delete/:id', function (req, res) {
@@ -39,13 +35,11 @@ module.exports = function (app) {
     });
 
     app.put(`/api/update/:id`, (req, res) => {
-        db.findOneAndUpdate({ _id: req.params.id }, { $set: { completed: true } })
+        db.findOneAndUpdate({ _id: req.params.id }, { $set: { completed: req.body.completed } })
             .then(function (db) {
-                
                 res.json(db);
             })
             .catch(function (err) {
-                
                 res.json(err);
             })
     });

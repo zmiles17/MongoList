@@ -10,9 +10,11 @@ app.use(bodyParser.json());
 // app.use(express.urlencoded({ extended: true }));
 // app.use(express.json());
 // app.use(express.static(path.join(__dirname, 'public')));
-mongoose.connect('mongodb://localhost/todolist', { useNewUrlParser: true });
-// mongoose.connect('mongodb://zmiles1:hfwuxyvH6VsEVEr@ds119113.mlab.com:19113/firstdb', { useNewUrlParser: true });
+
+mongoose.connect(
+    process.env.MONGODB_URI || 'mongodb://zmiles1:hfwuxyvH6VsEVEr@ds119113.mlab.com:19113/firstdb', { useNewUrlParser: true });
 require('./routes/api-routes.js')(app);
 app.listen(PORT, function () {
     console.log(`App is now listening on PORT ${PORT}`)
+    
 }); 
