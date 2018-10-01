@@ -18,7 +18,7 @@ module.exports = function (app) {
     app.post('/add', function (req, res) {
         db.create(req.body)
             .then(function (db) {
-                console.log(req.body);
+                console.log(db);
                 res.json(db);
             })
             .catch(function (err) {
@@ -27,15 +27,18 @@ module.exports = function (app) {
             })
     })
 
-    // app.delete('/delete', function (req, res) {
-    //     list.splice(req.body.index, 1);
-    //     res.json(list);
-    //     console.log(list);
-    // });
+    app.delete('/delete', function (req, res) {
+        db.remove(req.body)
+            .then(function(db){
+                res.json(db);
+            })
+            .catch(function(err){
+                res.json(err)
+            })
+    });
 
-    app.put('/api/update', (req, res) => {
+    app.put(`/api/update/:id`, (req, res) => {
         db.findOneAndUpdate({ itemName: req.params.id }, { $set: { completed: req.body.completed } })
-
             .then(function (db) {
                 console.log(db);
                 res.json(db);
