@@ -5,11 +5,11 @@ module.exports = function (app) {
     app.get('/api/list', function (req, res) {
         db.find({})
             .then(function (db) {
-                console.log(db);
+                
                 res.json(db);
             })
             .catch(function (err) {
-                console.log(err);
+                
                 res.json(err);
             })
     })
@@ -18,17 +18,18 @@ module.exports = function (app) {
     app.post('/add', function (req, res) {
         db.create(req.body)
             .then(function (db) {
-                console.log(db);
+                
                 res.json(db);
             })
             .catch(function (err) {
-                console.log(err);
+                
                 res.json(err);
             })
+            console.log(req.body);
     })
 
-    app.delete('/delete', function (req, res) {
-        db.remove(req.body)
+    app.delete('/delete/:id', function (req, res) {
+        db.deleteOne({_id: req.params.id})
             .then(function(db){
                 res.json(db);
             })
@@ -38,13 +39,13 @@ module.exports = function (app) {
     });
 
     app.put(`/api/update/:id`, (req, res) => {
-        db.findOneAndUpdate({ itemName: req.params.id }, { $set: { completed: req.body.completed } })
+        db.findOneAndUpdate({ _id: req.params.id }, { $set: { completed: true } })
             .then(function (db) {
-                console.log(db);
+                
                 res.json(db);
             })
             .catch(function (err) {
-                console.log(err);
+                
                 res.json(err);
             })
     });
