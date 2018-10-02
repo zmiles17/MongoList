@@ -22,7 +22,6 @@ const getItems = function () {
         $('.checkbox').on('click', function (event) {
             const ID = $(event.target).attr('data-id');
             const checked = event.target.checked;
-            console.log(checked);
             const data = {};
             if (checked) {
                  data.completed = true 
